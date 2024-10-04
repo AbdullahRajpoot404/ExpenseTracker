@@ -1,0 +1,37 @@
+.icon-gradient {
+    background: linear-gradient(to top, #24DBC6, #3C3C3C); 
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .hoverClass:hover{
+    color: #24DBC6;
+    background-color: #28282A;
+  }
+
+
+  @layer components {
+    .scrollbar-thin::-webkit-scrollbar {
+      width: 12px; /* Width of the scrollbar */
+    }
+  
+    .scrollbar-thin::-webkit-scrollbar-track {
+      background: #1B1B1B; /* Background of the scrollbar track */
+      border-radius: 6px; /* Rounded corners */
+    }
+  
+    .scrollbar-thin::-webkit-scrollbar-thumb {
+      background: #24DBC6; /* Color of the scrollbar thumb */
+      border-radius: 6px; /* Rounded corners */
+    }
+  
+    .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+      background: #1DB2B2; /* Color of the scrollbar thumb on hover */
+    }
+  
+    .scrollbar-thin {
+      scrollbar-width: thin; /* For Firefox */
+      scrollbar-color: #24DBC6 #1B1B1B; /* thumb color track color */
+    }
+  }
