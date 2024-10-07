@@ -5,11 +5,11 @@ import { useNavigate } from 'react-router-dom';
 import registerUser from './RegisterUser';
 import LoginBg from '../Static/LoginBg.jfif'
 import { useForm } from 'react-hook-form';
+import { checkAlert } from './SweetAlerts/SweetAlerts';
 export default function Login({ onLogin }) {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const navigate = useNavigate();
 
-    // Function to handle login
     const handleLogin = (data, e) => {
         e.preventDefault()
 
@@ -24,7 +24,11 @@ export default function Login({ onLogin }) {
             onLogin()
             navigate('/home')
         } else {
-            alert('Invalid email or password')
+            checkAlert({
+                title: 'Error',
+                text: 'Invalid email or password',
+                icon: 'error'
+            })
         }
     };
     return (

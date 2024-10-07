@@ -40,4 +40,20 @@ export const AprovalPopUp = () => {
       cancelButton: 'custom-cancel'
     }
   });
-}      
+}
+
+
+export const checkAlert = (data) => {
+  Swal.fire({
+    title: data.title,
+    text: data.text,
+    icon: data.icon,
+    background: '#28282A',
+    color: '#ffffff',
+    customClass: {
+      title: 'text-white',
+      popup: 'bg-[#28282A]',
+      confirmButton: 'bg-[#35DCC6] text-black font-bold'
+    }
+  });
+}

@@ -123,28 +123,28 @@ export const expensesData = [
             {
                 icon: <TbBurger className="text-[#24DBC6]" />,
                 date: "09/09/2022",
-                subject: "Food Catering",
+                subject: "Party",
             }
         ],
         category: "Party",
         amount: "250.00",
         report: "November_2022",
         payment: "Credited",
-        category: "Food",
+        category: "Parties",
     },
     {
         details: [
             {
                 icon: <TbBurger className="text-[#24DBC6]" />,
                 date: "09/09/2022",
-                subject: "Food Catering",
+                subject: "Travel",
             }
         ],
         category: "Catering",
         amount: "250.00",
         report: "November_2022",
         payment: "Credited",
-        category: "Food",
+        category: "Traveling",
     },
 
 ]

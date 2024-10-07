@@ -1,34 +1,74 @@
-import React from 'react'
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { IoFilter } from "react-icons/io5";
-import { MdOutlineRemoveRedEye } from "react-icons/md";
-import { FaCheck } from "react-icons/fa6";
-import { RxCross1 } from "react-icons/rx";
 import { HiOutlineDotsHorizontal } from "react-icons/hi";
-import { CategoryData } from '../../Components/Data.js';
+import { CategoryData as initialCategoryData } from '../../Components/Data.js';
 import { MdDelete } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
+import { checkAlert } from '../SweetAlerts/SweetAlerts.js';
 
 export default function Category() {
-    const [showForms, setShowForms] = useState(false);
-    const [name, setName] = useState('');
-    const [editor, setEditor] = useState('');
+    const [categories, setCategories] = useState(initialCategoryData)
+    const [showForms, setShowForms] = useState(false)
+    const [name, setName] = useState('')
+    const [editor, setEditor] = useState('')
+    const [isEditing, setIsEditing] = useState(false)
+    const [currentIndex, setCurrentIndex] = useState(null)
 
     const onSubmit = () => {
         if (name && editor) {
-            const newCategory = {
-                name: name,
-                editor: editor
+            if (isEditing) {
+                const updatedCategories = categories.map((category, index) =>
+                    index === currentIndex
+                        ? { name: name, editor: editor }
+                        : category
+                );
+                setCategories(updatedCategories)
+                setIsEditing(false)
+            } else {
+
+                const newCategory = {
+                    name: name,
+                    editor: editor
+                };
+                setCategories([...categories, newCategory])
             }
-            CategoryData.push(newCategory)
+
             setName('')
             setEditor('')
+            setShowForms(false)
         }
+    }
+
+    const handleDelete = (id) => {
+        if (isEditing) {
+            checkAlert({
+                title: 'Error',
+                text: 'Please save your changes before deleting',
+                icon: 'error'
+            })
+        } else {
+            const updatedCategories = categories.filter((category, index) => index !== id)
+            setCategories(updatedCategories)
+        }
+    }
+
+    const handleEdit = (index) => {
+        const categoryToEdit = categories[index]
+        setName(categoryToEdit.name)
+        setEditor(categoryToEdit.editor)
+        setCurrentIndex(index)
+        setIsEditing(true)
+        setShowForms(true)
     }
 
     const handleShowForms = () => {
         setShowForms(!showForms);
+        if (!isEditing) {
+            setName('');
+            setEditor('');
+        }
     }
+
     return (
         <div className='p-7'>
             <div className='text-white flex justify-between p-4'>
@@ -36,7 +76,9 @@ export default function Category() {
                 <div className='flex gap-2'>
                     <button
                         onClick={handleShowForms}
-                        className='text-[12px] bg-[#24DBC6] h-[22px] px-2 rounded-md text-black font-bold mt-2'>+Add Category</button>
+                        className='text-[12px] bg-[#24DBC6] h-[22px] px-2 rounded-md text-black font-bold mt-2'>
+                        {isEditing ? "Edit Category" : "+Add Category"}
+                    </button>
                     <button className='border border-[#363636] px-1 text-[10px] rounded-md h-[22px] text-[#24DBC6] mt-2 font-bold bg-[#1B1B1B]' ><IoFilter /></button>
                     <button className='border border-[#363636] px-1 text-[10px] rounded-md h-[22px] text-[#24DBC6] mt-2 font-bold bg-[#1B1B1B]' ><HiOutlineDotsHorizontal /></button>
                 </div>
@@ -65,11 +107,10 @@ export default function Category() {
                         className='bg-[#24DBC6] text-black font-bold px-4 rounded-md'
                         onClick={onSubmit}
                     >
-                        Add
+                        {isEditing ? "Update" : "Add"}
                     </button>
                 </div>
             )}
-
 
             <div className='grid grid-cols-12'>
                 <div className='col-span-12'>
@@ -82,25 +123,26 @@ export default function Category() {
                             </tr>
                         </thead>
                         <tbody className='text-white'>
-                            {CategoryData.map((CategoryData, index) => (
+                            {categories.map((category, index) => (
                                 <tr key={index} className={`${index % 2 === 0 ? "bg-[#1B1B1B] h-[90px]" : "bg-[#28282A] h-[90px]"} `}>
-                                    <td className='font-bold text-sm pl-7'>{CategoryData.name}</td>
-                                    <td className='font-bold text-sm'>{CategoryData.editor}</td>
+                                    <td className='font-bold text-sm pl-7'>{category.name}</td>
+                                    <td className='font-bold text-sm'>{category.editor}</td>
                                     <td>
                                         <div className='flex gap-2'>
-                                            <FaEdit className='cursor-pointer text-[#25B9A6] text-xl' />
-                                            <MdDelete className='text-[#A41E31] cursor-pointer font-extrabold text-xl' />
-
+                                            <FaEdit
+                                                onClick={() => handleEdit(index)}
+                                                className='cursor-pointer text-[#25B9A6] text-xl' />
+                                            <MdDelete
+                                                onClick={() => handleDelete(index)}
+                                                className='text-[#A41E31] cursor-pointer font-extrabold text-xl' />
                                         </div>
                                     </td>
                                 </tr>
                             ))}
-
                         </tbody>
                     </table>
                 </div>
             </div>
-
         </div>
-    )
+    );
 }
