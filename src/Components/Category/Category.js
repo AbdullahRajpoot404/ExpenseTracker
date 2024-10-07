@@ -6,6 +6,8 @@ import { FaCheck } from "react-icons/fa6";
 import { RxCross1 } from "react-icons/rx";
 import { HiOutlineDotsHorizontal } from "react-icons/hi";
 import { CategoryData } from '../../Components/Data.js';
+import { MdDelete } from "react-icons/md";
+import { FaEdit } from "react-icons/fa";
 
 export default function Category() {
     const [showForms, setShowForms] = useState(false);
@@ -86,9 +88,9 @@ export default function Category() {
                                     <td className='font-bold text-sm'>{CategoryData.editor}</td>
                                     <td>
                                         <div className='flex gap-2'>
-                                            <MdOutlineRemoveRedEye className='cursor-pointer' />
-                                            <FaCheck className='text-[#24DBC6] cursor-pointer' />
-                                            <RxCross1 className='text-[#A41E31] cursor-pointer' />
+                                            <FaEdit className='cursor-pointer text-[#25B9A6] text-xl' />
+                                            <MdDelete className='text-[#A41E31] cursor-pointer font-extrabold text-xl' />
+
                                         </div>
                                     </td>
                                 </tr>

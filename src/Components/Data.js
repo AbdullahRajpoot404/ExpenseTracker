@@ -98,15 +98,11 @@ export const expensesData = [
                 subject: "Food Catering",
             }
         ],
-        merchant: "McFood",
-        amount: "$250.00",
+        category: "Food",
+        amount: "250.00",
         report: "November_2022",
         payment: "Credited",
         category: "Food",
-        discription: "Catering",
-        employee: "Shameem Hossain",
-
-
     },
     {
         details: [
@@ -116,13 +112,11 @@ export const expensesData = [
                 subject: "Food Catering",
             }
         ],
-        merchant: "Officio",
-        amount: "$150.00",
+        category: "Travel",
+        amount: "250.00",
         report: "November_2022",
         payment: "Credited",
         category: "Food",
-        discription: "Catering",
-        employee: "Shameem Hossain",
     },
     {
         details: [
@@ -132,29 +126,11 @@ export const expensesData = [
                 subject: "Food Catering",
             }
         ],
-        merchant: "Resturant",
-        amount: "$75.50",
-        report: "November_2022",
-        payment: "Debited",
-        category: "Food",
-        discription: "Catering",
-        employee: "Shameem Hossain",
-    },
-    {
-        details: [
-            {
-                icon: <TbBurger className="text-[#24DBC6]" />,
-                date: "09/09/2022",
-                subject: "Food Catering",
-            }
-        ],
-        merchant: "Airlines",
-        amount: "$450.26",
+        category: "Party",
+        amount: "250.00",
         report: "November_2022",
         payment: "Credited",
         category: "Food",
-        discription: "Catering",
-        employee: "Shameem Hossain",
     },
     {
         details: [
@@ -164,14 +140,13 @@ export const expensesData = [
                 subject: "Food Catering",
             }
         ],
-        merchant: "Bistro",
-        amount: "$120.00",
+        category: "Catering",
+        amount: "250.00",
         report: "November_2022",
-        payment: "Debited",
+        payment: "Credited",
         category: "Food",
-        discription: "Catering",
-        employee: "Shameem Hossain",
-    }
+    },
+
 ]
 
 export const tripsData = [

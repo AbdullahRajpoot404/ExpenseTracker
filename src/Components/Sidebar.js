@@ -37,12 +37,12 @@ export default function Sidebar({ isOpen, setActivePage }) {
                     </div>
                 </div>
 
-                <div className='flex mt-3 gap-3 text-xl p-4 group hover:bg-[#28282A] font-semibold rounded-lg lg:w-[150px] xl:w-[160px]'>
+                {/* <div className='flex mt-3 gap-3 text-xl p-4 group hover:bg-[#28282A] font-semibold rounded-lg lg:w-[150px] xl:w-[160px]'>
                     <div className='flex items-center gap-3' onClick={() => handleNavigation('trips', '/home/trips')}>
                         <FaPlaneDeparture className='mt-1 text-white group-hover:text-[#24DBC6] cursor-pointer' />
                         <label className='text-white group-hover:text-[#24DBC6] cursor-pointer'>Trips</label>
                     </div>
-                </div>
+                </div> */}
 
                 {/* <div className='flex mt-3 gap-3 text-xl p-4 group hover:bg-[#28282A] font-semibold rounded-lg lg:w-[150px] xl:w-[160px] md:text-lg'>
                     <div className='flex items-center gap-3' onClick={() => handleNavigation('approvals', '/home/approvals')}>

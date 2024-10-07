@@ -41,7 +41,7 @@ export default function Expenses({ setActivePage }) {
                                         <input id="custom-checkbox" type="checkbox" className="appearance-none w-5 h-5 border-2 border-[#666666] rounded-md cursor-pointer checked:bg-[#666666] checked:border-transparent focus:outline-none relative  checked:before:absolute checked:before:inset-0 checked:before:flex checked:before:items-center checked:before:justify-center checked:before:text-green-500 checked:before:content-['✓']" />
                                     </th>
                                     <th>DETAILS</th>
-                                    <th>MERCHANT</th>
+                                    <th>CATEGORY</th>
                                     <th>AMOUNT</th>
                                     <th>REPORT</th>
                                     <th>PAYMENT</th>
@@ -70,8 +70,8 @@ export default function Expenses({ setActivePage }) {
                                                 </div>
                                             </div>
                                         </td>
-                                        <td className='font-bold text-sm'>{expense.merchant}</td>
-                                        <td className='font-bold text-sm'>{`$ ${expense.amount}`}</td>
+                                        <td className='font-bold text-sm'>{expense.category}</td>
+                                        <td className='font-bold text-sm'>{expense.amount}</td>
                                         <td className='font-bold text-sm'>{expense.report}</td>
                                         <td>
                                             <button className='bg-[#891D5D] text-[11px] text-white px-2 py-1 rounded-3xl  font-bold w-[100px]'>
