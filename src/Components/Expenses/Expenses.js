@@ -26,6 +26,14 @@ export default function Expenses({ setActivePage }) {
         )
         : expensesData;
 
+
+    const totalAmount = expensesData.reduce((acc, expense) => acc + parseFloat(expense.amount), 0)
+
+    const creditAmount = expensesData.reduce((acc, expense) =>
+        expense.payment === 'Credited' ? acc + parseFloat(expense.amount) : acc, 0)
+
+    const debitAmount = expensesData.reduce((acc, expense) =>
+        expense.payment === 'Debited' ? acc + parseFloat(expense.amount) : acc, 0)
     return (
         <>
             <div className='p-7'>
@@ -109,21 +117,23 @@ export default function Expenses({ setActivePage }) {
                         )}
                     </div>
                 </div>
-                <div className="bg-[#28282A] p-5 rounded-lg max-w-md ml-auto mt-8">
-                    <h2 className="text-xl font-bold text-center border-b pb-2 mb-4 text-white">Expense Summary</h2>
-                    <div className="flex justify-between items-center mb-2">
-                        <span className="text-white font-semibold">Credit</span>
-                        <span className="font-semibold text-white">200</span>
+                {filteredExpenses.length > 0 && (
+                    <div className="bg-[#28282A] p-5 rounded-lg max-w-md ml-auto mt-8">
+                        <h2 className="text-xl font-bold text-center border-b pb-2 mb-4 text-white">Expense Summary</h2>
+                        <div className="flex justify-between items-center mb-2">
+                            <span className="text-white font-semibold">Credit</span>
+                            <span className="font-semibold text-white">{creditAmount}</span>
+                        </div>
+                        <div className="flex justify-between items-center mb-2">
+                            <span className="text-white font-semibold">Debit</span>
+                            <span className="font-semibold text-white">{debitAmount}</span>
+                        </div>
+                        <div className="flex justify-between items-center border-t pt-2 mt-4">
+                            <span className="text-lg font-bold text-white">Total</span>
+                            <span className="text-lg font-bold text-white">{totalAmount}</span>
+                        </div>
                     </div>
-                    <div className="flex justify-between items-center mb-2">
-                        <span className="text-white font-semibold">Debit</span>
-                        <span className="font-semibold text-white">2700</span>
-                    </div>
-                    <div className="flex justify-between items-center border-t pt-2 mt-4">
-                        <span className="text-lg font-bold text-white">Total</span>
-                        <span className="text-lg font-bold text-white"> 1500</span>
-                    </div>
-                </div>
+                )}
             </div>
 
         </>
