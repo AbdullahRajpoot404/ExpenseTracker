@@ -99,7 +99,7 @@ export const expensesData = [
             }
         ],
         category: "Food",
-        amount: "250.00",
+        amount: "250",
         report: "November_2022",
         payment: "Credited",
         category: "Food",
@@ -113,7 +113,7 @@ export const expensesData = [
             }
         ],
         category: "Travel",
-        amount: "250.00",
+        amount: "400",
         report: "November_2022",
         payment: "Credited",
         category: "Food",
@@ -127,7 +127,7 @@ export const expensesData = [
             }
         ],
         category: "Party",
-        amount: "250.00",
+        amount: "520",
         report: "November_2022",
         payment: "Credited",
         category: "Parties",
@@ -141,7 +141,7 @@ export const expensesData = [
             }
         ],
         category: "Catering",
-        amount: "250.00",
+        amount: "300",
         report: "November_2022",
         payment: "Credited",
         category: "Traveling",

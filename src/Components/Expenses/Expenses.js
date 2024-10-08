@@ -16,13 +16,15 @@ export default function Expenses({ setActivePage }) {
     };
 
 
-    const filteredExpenses = expensesData.filter((expense) =>
-        expense.details[0]?.subject.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        expense.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        expense.amount.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        expense.report.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        expense.payment.toLowerCase().includes(searchQuery.toLowerCase())
-    );
+    const filteredExpenses = searchQuery.length >= 3 ?
+        expensesData.filter((expense) =>
+            expense.details[0]?.subject.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            expense.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            expense.amount.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            expense.report.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            expense.payment.toLowerCase().includes(searchQuery.toLowerCase())
+        )
+        : expensesData;
 
     return (
         <>
@@ -50,9 +52,9 @@ export default function Expenses({ setActivePage }) {
                 <hr className='border-t-1 border-[#363636]' />
 
                 <div className='grid grid-cols-12'>
-                    <div className='col-span-12'>
+                    <div className='col-span-12 w-full text-left max-h-[460px] overflow-y-auto scrollbar-thin'>
                         {filteredExpenses.length > 0 ? (
-                            <table className='w-full text-left max-h-[700px] overflow-y-auto scrollbar-thin'>
+                            <table className='w-full text-left max-h-[500px] overflow-y-auto scrollbar-thin'>
                                 <thead className='text-[#9D9D9D] h-[50px]'>
                                     <tr>
                                         <th className='text-center'>
@@ -107,7 +109,23 @@ export default function Expenses({ setActivePage }) {
                         )}
                     </div>
                 </div>
+                <div className="bg-[#28282A] p-5 rounded-lg max-w-md ml-auto mt-8">
+                    <h2 className="text-xl font-bold text-center border-b pb-2 mb-4 text-white">Expense Summary</h2>
+                    <div className="flex justify-between items-center mb-2">
+                        <span className="text-white font-semibold">Credit</span>
+                        <span className="font-semibold text-white">200</span>
+                    </div>
+                    <div className="flex justify-between items-center mb-2">
+                        <span className="text-white font-semibold">Debit</span>
+                        <span className="font-semibold text-white">2700</span>
+                    </div>
+                    <div className="flex justify-between items-center border-t pt-2 mt-4">
+                        <span className="text-lg font-bold text-white">Total</span>
+                        <span className="text-lg font-bold text-white"> 1500</span>
+                    </div>
+                </div>
             </div>
+
         </>
     );
 }
