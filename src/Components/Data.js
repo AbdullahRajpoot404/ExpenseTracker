@@ -90,62 +90,62 @@ export const iconMaping = {
 }
 
 export const expensesData = [
-    {
-        details: [
-            {
-                icon: <TbBurger className="text-[#24DBC6]" />,
-                date: "09/09/2022",
-                subject: "Food Catering",
-            }
-        ],
-        category: "Food",
-        amount: "250",
-        report: "November_2022",
-        payment: "Credited",
-        category: "Food",
-    },
-    {
-        details: [
-            {
-                icon: <IoMdCut className="text-[#24DBC6]" />,
-                date: "09/09/2022",
-                subject: "Food Catering",
-            }
-        ],
-        category: "Travel",
-        amount: "400",
-        report: "November_2022",
-        payment: "Credited",
-        category: "Food",
-    },
-    {
-        details: [
-            {
-                icon: <TbBurger className="text-[#24DBC6]" />,
-                date: "09/09/2022",
-                subject: "Party",
-            }
-        ],
-        category: "Party",
-        amount: "520",
-        report: "November_2022",
-        payment: "Credited",
-        category: "Parties",
-    },
-    {
-        details: [
-            {
-                icon: <TbBurger className="text-[#24DBC6]" />,
-                date: "09/09/2022",
-                subject: "Travel",
-            }
-        ],
-        category: "Catering",
-        amount: "300",
-        report: "November_2022",
-        payment: "Credited",
-        category: "Traveling",
-    },
+    // {
+    //     details: [
+    //         {
+    //             icon: <TbBurger className="text-[#24DBC6]" />,
+    //             date: "09/09/2022",
+    //             subject: "Food Catering",
+    //         }
+    //     ],
+    //     category: "Food",
+    //     amount: "250",
+    //     report: "November_2022",
+    //     payment: "Credited",
+    //     category: "Food",
+    // },
+    // {
+    //     details: [
+    //         {
+    //             icon: <IoMdCut className="text-[#24DBC6]" />,
+    //             date: "09/09/2022",
+    //             subject: "Food Catering",
+    //         }
+    //     ],
+    //     category: "Travel",
+    //     amount: "400",
+    //     report: "November_2022",
+    //     payment: "Credited",
+    //     category: "Food",
+    // },
+    // {
+    //     details: [
+    //         {
+    //             icon: <TbBurger className="text-[#24DBC6]" />,
+    //             date: "09/09/2022",
+    //             subject: "Party",
+    //         }
+    //     ],
+    //     category: "Party",
+    //     amount: "520",
+    //     report: "November_2022",
+    //     payment: "Credited",
+    //     category: "Parties",
+    // },
+    // {
+    //     details: [
+    //         {
+    //             icon: <TbBurger className="text-[#24DBC6]" />,
+    //             date: "09/09/2022",
+    //             subject: "Travel",
+    //         }
+    //     ],
+    //     category: "Catering",
+    //     amount: "300",
+    //     report: "November_2022",
+    //     payment: "Credited",
+    //     category: "Traveling",
+    // },
 
 ]
 

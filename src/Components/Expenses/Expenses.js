@@ -1,14 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaSearch } from "react-icons/fa";
 import { expensesData } from '../../Components/Data.js';
 import { useNavigate } from 'react-router-dom';
-import { checkAlert } from '../SweetAlerts/SweetAlerts.js';
 import searchImg from '../../Static/search.png';
 
 
 export default function Expenses({ setActivePage }) {
     const [searchQuery, setSearchQuery] = useState('');
+    const [expenses, setExpenses] = useState([]);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const storedExpenses = JSON.parse(localStorage.getItem('expensesData')) || [];
+        setExpenses(storedExpenses);
+    }, []);
+
 
     const handleNavigation = (page, route) => {
         setActivePage(page);
@@ -17,7 +23,7 @@ export default function Expenses({ setActivePage }) {
 
 
     const filteredExpenses = searchQuery.length >= 3 ?
-        expensesData.filter((expense) =>
+        expenses.filter((expense) =>
             expense.details[0]?.subject.toLowerCase().includes(searchQuery.toLowerCase()) ||
             expense.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
             expense.amount.toLowerCase().includes(searchQuery.toLowerCase()) ||

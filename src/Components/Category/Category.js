@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { IoFilter } from "react-icons/io5";
 import { HiOutlineDotsHorizontal } from "react-icons/hi";
-import { CategoryData as initialCategoryData } from '../../Components/Data.js';
+import { CategoryData, CategoryData as initialCategoryData } from '../../Components/Data.js';
 import { MdDelete } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 import { checkAlert } from '../SweetAlerts/SweetAlerts.js';
@@ -31,8 +31,9 @@ export default function Category() {
                     editor: editor
                 };
                 setCategories([...categories, newCategory])
+                CategoryData.push(newCategory)
+                console.log(CategoryData)
             }
-
             setName('')
             setEditor('')
             setShowForms(false)

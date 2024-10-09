@@ -40,6 +40,11 @@ export default function NewExpenseForm({ setActivePage }) {
                 payment: payment,
                 category: category,
             }
+            const existingExpenses = JSON.parse(localStorage.getItem('expenses')) || []
+
+            const updatedExpenses = [...existingExpenses, newExpense]
+            localStorage.setItem('expensesData', JSON.stringify(updatedExpenses))
+
             expensesData.push(newExpense)
             console.log(expensesData)
             setSubject('')
@@ -48,6 +53,7 @@ export default function NewExpenseForm({ setActivePage }) {
             setCategory('Food')
             setPayment('')
         }
+
 
 
     }
@@ -168,9 +174,6 @@ export default function NewExpenseForm({ setActivePage }) {
 
             {/* Save buttons */}
             <div className="flex justify-end mt-6 gap-4 mr-2">
-                <button className="px-4 py-2 sm:px-6 sm:py-2.5 bg-gray-600 rounded-md hover:bg-gray-500">
-                    Save draft
-                </button>
                 <button className="px-4 py-2 sm:px-6 sm:py-2.5 bg-teal-500 rounded-md hover:bg-teal-400" onClick={() => { onSubmit(); }}>
                     Save
                 </button>
