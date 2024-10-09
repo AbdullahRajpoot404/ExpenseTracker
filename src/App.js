@@ -20,23 +20,27 @@ function App() {
     if (autStatus === 'true') {
       setIsAuthenticated(true);
     }
-  }, [])
+  }, []);
+
   const handleLogin = () => {
-    setIsAuthenticated(true)
-    localStorage.setItem('isAuthenticated', true)
-  }
+    setIsAuthenticated(true);
+    localStorage.setItem('isAuthenticated', true);
+  };
+
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    localStorage.removeItem('isAuthenticated');
+  };
 
   return (
     <Router>
       <Routes>
-
-        <Route path="/" element={isAuthenticated ? <Home /> : <Login onLogin={handleLogin} />} />
+        <Route path="/" element={isAuthenticated ? <Home onLogout={handleLogout} /> : <Login onLogin={handleLogin} />} />
         <Route path="/signup" element={<SignUp />} />
-
-
+        
         {isAuthenticated && (
           <>
-            <Route path="/home" element={<Home />}>
+            <Route path="/home" element={<Home onLogout={handleLogout} />}>
               <Route path="dashboard" element={<Dashboard />} />
               <Route path="expenses" element={<Expenses />} />
               <Route path="newexpenseform" element={<NewExpenseForm />} />

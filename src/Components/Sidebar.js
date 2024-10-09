@@ -1,19 +1,23 @@
 import React from 'react';
 import UserImage from '../Static/User.jpg';
 import { FaHome } from "react-icons/fa";
-import { FaPlaneDeparture } from "react-icons/fa";
-import { BsFillCalendar2CheckFill } from "react-icons/bs";
-import { BsCalendar2Fill } from "react-icons/bs";
-import { useNavigate } from 'react-router-dom';
+import { BsFillCalendar2CheckFill, BsCalendar2Fill } from "react-icons/bs";
 import { BiSolidCategory } from "react-icons/bi";
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-export default function Sidebar({ isOpen, setActivePage }) {
+export default function Sidebar({ isOpen, setActivePage, onLogout }) {
     const navigate = useNavigate();
+
     const handleNavigation = (page, route) => {
-        setActivePage(page)
-        navigate(route)
-    }
+        setActivePage(page);
+        navigate(route);
+    };
+
+    const handleLogoutClick = () => {
+        onLogout();
+        navigate('/login');
+    };
 
     return (
         <div className={`transition-transform duration-300 ${isOpen ? 'translate-x-0' : '-translate-x-full'} h-auto`}>
@@ -37,25 +41,17 @@ export default function Sidebar({ isOpen, setActivePage }) {
                     </div>
                 </div>
 
-                {/* <div className='flex mt-3 gap-3 text-xl p-4 group hover:bg-[#28282A] font-semibold rounded-lg lg:w-[150px] xl:w-[160px]'>
-                    <div className='flex items-center gap-3' onClick={() => handleNavigation('trips', '/home/trips')}>
-                        <FaPlaneDeparture className='mt-1 text-white group-hover:text-[#24DBC6] cursor-pointer' />
-                        <label className='text-white group-hover:text-[#24DBC6] cursor-pointer'>Trips</label>
-                    </div>
-                </div> */}
-
-                {/* <div className='flex mt-3 gap-3 text-xl p-4 group hover:bg-[#28282A] font-semibold rounded-lg lg:w-[150px] xl:w-[160px] md:text-lg'>
-                    <div className='flex items-center gap-3' onClick={() => handleNavigation('approvals', '/home/approvals')}>
-                        <BsFillCalendar2CheckFill className=' text-white group-hover:text-[#24DBC6] cursor-pointer' />
-                        <label className='text-white group-hover:text-[#24DBC6] cursor-pointer'>Approvals</label>
-                    </div>
-                </div> */}
-
                 <div className='flex mt-3 gap-3 text-xl p-4 group hover:bg-[#28282A] font-semibold rounded-lg lg:w-[150px] xl:w-[160px] md:text-lg'>
                     <div className='flex items-center gap-3' onClick={() => handleNavigation('category', '/home/category')}>
                         <BiSolidCategory className='text-xl text-white group-hover:text-[#24DBC6] cursor-pointer ' />
                         <label className='text-white group-hover:text-[#24DBC6] cursor-pointer'>Category</label>
                     </div>
+                </div>
+
+                <div className='flex mt-[305px] gap-3 text-xl p-4 group font-semibold rounded-lg md:text-lg'>
+                    <button onClick={handleLogoutClick} className='bg-[#28282A] rounded-lg w-[500px] h-[60px]'>
+                        <span className='text-[#24DBC6] cursor-pointer'>LOGOUT</span>
+                    </button>
                 </div>
             </div>
         </div>

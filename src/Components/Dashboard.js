@@ -8,7 +8,7 @@ import { PiShoppingBagOpenFill } from "react-icons/pi";
 import { RiBillFill } from "react-icons/ri";
 import { BiSolidReport } from "react-icons/bi";
 import { teamSpending, dayToDayExpense } from '../Components/Data.js'
-import { BarChart, Bar, XAxis, YAxis, Cell, Tooltip, Legend, ResponsiveContainer, } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, Cell, ResponsiveContainer, } from 'recharts';
 
 export default function Dashboard() {
 

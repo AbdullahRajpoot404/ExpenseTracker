@@ -9,7 +9,7 @@ import NewExpenseForm from './NewExpenseForm/NewExpenseForm';
 import TripForm from './TripForm/TripForm';
 import Category from './Category/Category';
 
-export default function Home() {
+export default function Home({ onLogout }) {
     const [isOpen, setIsOpen] = useState(true);
     const [activePage, setActivePage] = useState('dashboard'); // Default active page is dashboard
 
@@ -32,6 +32,7 @@ export default function Home() {
                     <Sidebar
                         isOpen={isOpen}
                         setActivePage={setActivePage}
+                        onLogout={onLogout}
                     />
                 </div>
 
